@@ -13,11 +13,14 @@ def generate_matrices():
     try:
         size = int(size_entry.get())
         if size <= 0:
-            messagebox.showerror("Error size must be greater than 0")
+            messagebox.showerror("Error", "size must be greater than 0")
             return
     except ValueError:
-        messagebox.showerror("Error, enter a valid number")
+        messagebox.showerror("Error", "enter a valid number")
         return
+
+    for widget in matrix_frame.winfo_children():
+        widget.destroy()
 
     entries_A = []
     entries_B = []
@@ -47,29 +50,40 @@ def generate_matrices():
 
 def get_matrix(entries):
     """read the numbers from the entry boxes and converts them into a list of floats"""
-    # Temporary placeholder
+    matrix = []
+    for row in entries:
+        matrix_row = [float(e.get()) for e in row]
+        matrix.append(matrix_row)
     print("matrix data read")
-    return []
+    return matrix
 
 
 def display_result(matrix):
     """Formats the list result and updates the UI label to show it"""
-    # Temporary placeholder
-    result_label.config(text="todo brb")
+    result_label.config(text=str(matrix))
+
 
 def add():
     """Addition what do yotu think this isa brwajw abfajjw """
+    A = get_matrix(entries_A)
+    B = get_matrix(entries_B)
+    
+    if A and B:
+        result = []
+        for i in range(size):
+            row_result = []
+            for j in range(size):
+                row_result.append(A[i][j] + B[i][j])
+            result.append(row_result)
+        display_result(result)
 
-    pass
 
 def subtract():
     """Subtracts no shit"""
-
     pass
 
 def multiply():
     """mulitply a and b awdfaqwerq """
-
     pass
 
 # --- GUI SETUP ---
