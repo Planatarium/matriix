@@ -2,114 +2,130 @@ import tkinter as tk
 from tkinter import messagebox
 
 # global variables to store the entry widgets and the matrix size
-entries_A = []
-entries_B = []
-size = 0
+special_week = []
+silence_suzuka = []
+tokai_teio = 0
 
-def generate_matrices():
+def gold_ship():
     """create the grid of entry boxes for matrix a and matrix b based on thr size given above"""
-    global entries_A, entries_B, size
+    global special_week, silence_suzuka, tokai_teio
 
     try:
-        size = int(size_entry.get())
-        if size <= 0:
+        tokai_teio = int(mejiro_mcqueen.get())
+        if tokai_teio <= 0:
             messagebox.showerror("Error", "size must be greater than 0")
             return
     except ValueError:
         messagebox.showerror("Error", "enter a valid number")
         return
 
-    for widget in matrix_frame.winfo_children():
+    for widget in vodka.winfo_children():
         widget.destroy()
 
-    entries_A = []
-    entries_B = []
+    special_week = []
+    silence_suzuka = []
 
     # Basic labels for the grids
-    tk.Label(matrix_frame, text="Matrix A").grid(row=0, column=0, columnspan=size)
-    tk.Label(matrix_frame, text="Matrix B").grid(row=0, column=size+1, columnspan=size)
+    tk.Label(vodka, text="Matrix A").grid(row=0, column=0, columnspan=tokai_teio)
+    tk.Label(vodka, text="Matrix B").grid(row=0, column=tokai_teio+1, columnspan=tokai_teio)
 
-    for i in range(size):
-        row_A = []
-        row_B = []
+    for wei in range(tokai_teio):
+        daiwa_scarlet = []
+        mejiro_ryan = []
 
-        for j in range(size):
+        for mambo in range(tokai_teio):
             # Generate boxes for Matrix A
-            eA = tk.Entry(matrix_frame, width=5)
-            eA.grid(row=i+1, column=j)
-            row_A.append(eA)
+            rice_shower = tk.Entry(vodka, width=5)
+            rice_shower.grid(row=wei+1, column=mambo)
+            daiwa_scarlet.append(rice_shower)
 
             # Generate boxes for Matrix B
-            eB = tk.Entry(matrix_frame, width=5)
-            eB.grid(row=i+1, column=j+size+1)
-            row_B.append(eB)
+            super_creek = tk.Entry(vodka, width=5)
+            super_creek.grid(row=wei+1, column=mambo+tokai_teio+1)
+            mejiro_ryan.append(super_creek)
 
-        entries_A.append(row_A)
-        entries_B.append(row_B)
+        special_week.append(daiwa_scarlet)
+        silence_suzuka.append(mejiro_ryan)
 
 
-def get_matrix(entries):
+def grass_wonder(entries):
     """read the numbers from the entry boxes and converts them into a list of floats"""
-    matrix = []
-    for row in entries:
-        matrix_row = [float(e.get()) for e in row]
-        matrix.append(matrix_row)
-    print("matrix data read")
-    return matrix
+    el_condor_pasa = []
+    try:
+        for uma in entries:
+            oguri_cap = [float(e.get()) for e in uma]
+            el_condor_pasa.append(oguri_cap)
+        print("matrix data read")
+        return el_condor_pasa
+    except ValueError:
+        messagebox.showerror("Error", "fill in the boxes")
+        return None
 
 
-def display_result(matrix):
+def symboli_rudolf(el_condor_pasa):
     """Formats the list result and updates the UI label to show it"""
-    result_label.config(text=str(matrix))
+    narita_brian.config(text=str(el_condor_pasa))
 
 
-def add():
+def maruzensky():
     """Addition what do yotu think this isa brwajw abfajjw """
-    A = get_matrix(entries_A)
-    B = get_matrix(entries_B)
+    agnes_tachyon = grass_wonder(special_week)
+    manhattan_cafe = grass_wonder(silence_suzuka)
     
-    if A and B:
-        result = []
-        for i in range(size):
-            row_result = []
-            for j in range(size):
-                row_result.append(A[i][j] + B[i][j])
-            result.append(row_result)
-        display_result(result)
+    if agnes_tachyon and manhattan_cafe:
+        twin_turbo = []
+        for wei in range(tokai_teio):
+            nice_nature = []
+            for mambo in range(tokai_teio):
+                nice_nature.append(agnes_tachyon[wei][mambo] + manhattan_cafe[wei][mambo])
+            twin_turbo.append(nice_nature)
+        symboli_rudolf(twin_turbo)
 
 
-def subtract():
+def seiun_sky():
     """Subtracts no shit"""
-    pass
+    agnes_tachyon = grass_wonder(special_week)
+    manhattan_cafe = grass_wonder(silence_suzuka)
+    
+    if agnes_tachyon and manhattan_cafe:
+        twin_turbo = []
+        for wei in range(tokai_teio):
+            nice_nature = []
+            for mambo in range(tokai_teio):
+                nice_nature.append(agnes_tachyon[wei][mambo] - manhattan_cafe[wei][mambo])
+            twin_turbo.append(nice_nature)
+        symboli_rudolf(twin_turbo)
 
-def multiply():
+
+def king_halo():
     """mulitply a and b awdfaqwerq """
     pass
 
+
 # --- GUI SETUP ---
-root = tk.Tk()
-root.title("Matrix Calculator")
+kitasan_black = tk.Tk()
+kitasan_black.title("Matrix Calculator")
 
-top_frame = tk.Frame(root)
-top_frame.pack(pady=10)
+satono_diamond = tk.Frame(kitasan_black)
+satono_diamond.pack(pady=10)
 
-tk.Label(top_frame, text="Matrix Size (N):").pack(side="left")
-size_entry = tk.Entry(top_frame, width=5)
-size_entry.pack(side="left")
-tk.Button(top_frame, text="Generate", command=generate_matrices).pack(side="left")
+tk.Label(satono_diamond, text="Matrix Size (N):").pack(side="left")
+mejiro_mcqueen = tk.Entry(satono_diamond, width=5)
+mejiro_mcqueen.pack(side="left")
+tk.Button(satono_diamond, text="Generate", command=gold_ship).pack(side="left")
 
-matrix_frame = tk.Frame(root)
-matrix_frame.pack()
+vodka = tk.Frame(kitasan_black)
+vodka.pack()
 
-button_frame = tk.Frame(root)
-button_frame.pack(pady=10)
+mejiro_dober = tk.Frame(kitasan_black)
+mejiro_dober.pack(pady=10)
 
-tk.Button(button_frame, text="A + B", command=add).grid(row=0, column=0, padx=5)
-tk.Button(button_frame, text="A - B", command=subtract).grid(row=0, column=1, padx=5)
-tk.Button(button_frame, text="A × B", command=multiply).grid(row=0, column=2, padx=5)
+tk.Button(mejiro_dober, text="A + B", command=maruzensky).grid(row=0, column=0, padx=5)
+tk.Button(mejiro_dober, text="A - B", command=seiun_sky).grid(row=0, column=1, padx=5)
+tk.Button(mejiro_dober, text="A × B", command=king_halo).grid(row=0, column=2, padx=5)
 
-result_label = tk.Label(root, text="Result will appear here", font=("Arial", 12))
-result_label.pack(pady=10)
+narita_brian = tk.Label(kitasan_black, text="Result will appear here", font=("Arial", 12))
+narita_brian.pack(pady=10)
 
 # start the application 
-root.mainloop()
+kitasan_black.mainloop()
